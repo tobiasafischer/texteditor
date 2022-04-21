@@ -1,0 +1,27 @@
+.fr-box {
+   border-radius: 4px;
+   min-height: 351px;
+   max-height: 351px;
+   width: 80%;
+   
+   .fr-wrapper {
+      height: 259px;
+   }
+  
+   .fr-toolbar {
+     width: 100%;
+     .fr-btn-grp > button {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+      height: 52px;
+       border: none;
+       margin: 0;
+       .fr-dropdown::after {
+         margin:0;
+         background-color: red;
+         position: relative!important;
+       }
+     }
+   }
+}
