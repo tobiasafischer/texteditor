@@ -1,12 +1,13 @@
+//@ts-nocheck
 import React, { useState } from 'react'
+import FontFamily from '@tiptap/extension-font-family'
+import TextStyle from '@tiptap/extension-text-style'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import TextStyle from '@tiptap/extension-text-style'
 
-import { Container, Button, ButtonGroup, Header, ButtonTab, DropdownItem } from './TipTap.styled'
 import Dropdown from './Dropdown'
-import FontFamily from '@tiptap/extension-font-family'
 import { FontSize } from './FontSize'
+import { Container, Button, ButtonGroup, Header, ButtonTab, DropdownItem } from './TipTap.styled'
 
 export const sizes = [
    '8',
@@ -40,7 +41,7 @@ export const fonts = {
    'Brush Script MT': 'Brush Script MT',
 }
 
-const MenuBar: React.FC = ({ editor }) => {
+const MenuBar: React.FC<{ editor: any }> = ({ editor }) => {
    const [displaySize, setDisplaySize] = useState('12')
    return (
       <ButtonTab>
@@ -64,6 +65,7 @@ const MenuBar: React.FC = ({ editor }) => {
             <Dropdown title="Font Family">
                {Object.keys(fonts).map((font) => (
                   <DropdownItem
+                     key={font}
                      onClick={() => editor.chain().focus().setFontFamily(fonts[font]).run()}
                      className={
                         editor.isActive('textStyle', { fontFamily: fonts[font] }) && 'is-active'
@@ -77,6 +79,7 @@ const MenuBar: React.FC = ({ editor }) => {
             <Dropdown title={displaySize}>
                {sizes.map((size) => (
                   <DropdownItem
+                     key={size}
                      onClick={() => {
                         setDisplaySize(size)
                         editor.chain().focus().setFontSize(`${size}px`).run()

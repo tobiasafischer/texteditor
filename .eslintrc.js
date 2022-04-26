@@ -6,11 +6,20 @@ module.exports = {
       JSX: true,
    },
    extends: ['plugin:react/recommended'],
-   parserOptions: {
-      ecmaVersion: 12,
-      sourceType: 'module',
-   },
+   plugins: ['@typescript-eslint', 'import'],
+   overrides: [
+      {
+         files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+         extends: ['plugin:react/recommended'],
+         parserOptions: {
+            ecmaVersion: 12,
+            sourceType: 'module',
+            project: ['./tsconfig.json'], // Specify it only for TypeScript files
+         },
+      },
+   ],
    rules: {
+      // 'no-undef': 'error',
       'jsx-a11y/aria-proptypes': 'off', // allows us to !!formErrors, this just cleans up the ternary, will return 'true' or 'false'
       'no-nested-ternary': 'off', // in most cases this will never come up but if you ever need nested ternary it is usually just so code is more concise
       'import/prefer-default-export': 'off', // fixes indexing issues / styled files we dont want default exports
@@ -50,18 +59,9 @@ module.exports = {
       semi: 'off', // ew
 
       // on imports we dont need the file extension name
-      'import/extensions': [
-         'error',
-         'ignorePackages',
-         {
-            js: 'never',
-            jsx: 'never',
-            ts: 'never',
-            tsx: 'never',
-         },
-      ],
+      'import/extensions': 'off',
       'prettier/prettier': 'off',
-
+      'no-console': 'off',
       // import order prettier stuff
       'import/order': [
          'error',

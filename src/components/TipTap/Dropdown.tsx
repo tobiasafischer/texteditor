@@ -1,7 +1,8 @@
+//@ts-nocheck
 import React, { useState } from 'react'
-import { Button } from './TipTap.styled'
 import { usePopper } from 'react-popper'
 import styled from 'styled-components'
+import { Button } from './TipTap.styled'
 
 const Container = styled.div``
 
@@ -14,7 +15,7 @@ const DropdownContainer = styled.div<{ visible: boolean }>`
    padding: 5px 0px;
 `
 
-const Dropdown: React.FC<{ title: string }> = ({ children, title }) => {
+const Dropdown: React.FC<{ title: string; children: any }> = ({ children, title }) => {
    // lol
    const [visible, setVisible] = useState(false)
    const [referenceRef, setReferenceRef] = useState(null)

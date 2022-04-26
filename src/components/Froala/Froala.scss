@@ -1,0 +1,80 @@
+.fr-box {
+   min-height: 351px;
+   max-height: 351px;
+   width: 100%;
+
+   .fr-wrapper {
+      border-radius: 0 !important;
+      border: none !important;
+      border-left: 1px solid #e9ecef !important;
+      border-right: 1px solid #e9ecef !important;
+      margin: 0 !important;
+      height: 259px;
+      .fr-view {
+         height: 100%;
+      }
+   }
+   .fr-float-left {
+      margin: 0 !important;
+   }
+
+   .fr-float-left {
+      button + button {
+         &:before {
+            width: 0px;
+         }
+      }
+   }
+
+   .fr-float-left > button:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 19%;
+      height: 61%;
+      width: 1px;
+      background-color: #e9ecef;
+   }
+
+   .fr-toolbar {
+      border-color: #efefef;
+
+      .fr-btn-grp > button {
+         display: flex !important;
+         justify-content: center !important;
+         align-items: center !important;
+         height: 52px;
+         border: none;
+         margin: 0px;
+         padding: 0px 15px !important;
+      }
+   }
+}
+
+.fr-dropdown:after {
+   position: relative !important;
+   top: 0 !important;
+   right: 0 !important;
+   border-top: 4px solid #697789 !important;
+}
+
+.fr-dropdown {
+   display: flex !important;
+   justify-content: center !important;
+   align-items: center !important;
+   padding: 0px 10px !important ;
+   span {
+      padding: 0 !important;
+      margin: 0 !important;
+   }
+}
+
+#moreRich-1 {
+   svg {
+      display: none;
+   }
+   &:after {
+      font-weight: 600;
+      content: 'Smart Fields';
+   }
+}

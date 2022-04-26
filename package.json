@@ -1,35 +1,68 @@
 {
-  "name": "reactfroalalatest",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "src/index.js",
-  "dependencies": {
-    "@tiptap/extension-font-family": "2.0.0-beta.16",
-    "@tiptap/extension-text-style": "2.0.0-beta.18",
-    "@tiptap/react": "2.0.0-beta.86",
-    "@tiptap/starter-kit": "2.0.0-beta.131",
-    "@types/styled-components": "5.1.15",
-    "react": "16.8.4",
-    "react-bootstrap": "1.6.1",
-    "react-dom": "16.8.4",
-    "react-froala-wysiwyg": "4.0.10",
-    "react-popper": "2.2.5",
-    "react-scripts": "2.0.3",
-    "styled-components": "5.3.5",
-    "tiptap-extension-font-size": "1.1.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+   "name": "texteditor",
+   "version": "0.1.0",
+   "private": true,
+   "dependencies": {
+      "@testing-library/jest-dom": "^5.16.4",
+      "@testing-library/react": "^13.1.1",
+      "@testing-library/user-event": "^13.5.0",
+      "@tiptap/extension-font-family": "2.0.0-beta.16",
+      "@tiptap/extension-text-style": "2.0.0-beta.18",
+      "@tiptap/react": "2.0.0-beta.86",
+      "@tiptap/starter-kit": "2.0.0-beta.131",
+      "@types/eslint": "^8.4.1",
+      "@types/jest": "^27.4.1",
+      "@types/lodash": "^4.14.182",
+      "@types/node": "^16.11.27",
+      "@types/react": "^18.0.5",
+      "@types/react-dom": "^18.0.1",
+      "@types/styled-components": "5.1.15",
+      "node-sass": "^7.0.1",
+      "react": "^18.0.0",
+      "react-bootstrap": "1.6.1",
+      "react-dom": "^18.0.0",
+      "react-froala-wysiwyg": "4.0.10",
+      "react-popper": "2.2.5",
+      "react-scripts": "5.0.1",
+      "styled-components": "5.3.5",
+      "tiptap-extension-font-size": "1.1.1",
+      "typescript": "^4.6.3",
+      "web-vitals": "^2.1.4"
+   },
+   "devDependencies": {
+      "@typescript-eslint/eslint-plugin": "4",
+      "@typescript-eslint/parser": "4",
+      "eslint": "7",
+      "eslint-config-airbnb": "18",
+      "eslint-config-prettier": "^8.3.0",
+      "eslint-plugin-import": "^2.25.3",
+      "eslint-plugin-jsx-a11y": "^6.5.1",
+      "eslint-plugin-prettier": "^4.0.0",
+      "eslint-plugin-react": "^7.27.0",
+      "eslint-plugin-react-hooks": "^4.3.0"
+   },
+   "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+   },
+   "eslintConfig": {
+      "extends": [
+         "react-app",
+         "react-app/jest"
+      ]
+   },
+   "browserslist": {
+      "production": [
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
+      "development": [
+         "last 1 chrome version",
+         "last 1 firefox version",
+         "last 1 safari version"
+      ]
+   }
 }
