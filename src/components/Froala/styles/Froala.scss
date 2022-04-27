@@ -74,7 +74,7 @@
       display: none;
    }
    &:after {
-      font-weight: 600;
+      font-weight: 500;
       content: 'Smart Fields';
    }
 }
@@ -89,4 +89,16 @@
 
 .fr-open {
    margin-bottom: 0 !important;
+}
+
+#smart-tooltip {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 0px;
+   left: 145px !important;
+   &:after {
+      font-size: 11px;
+      content: 'Insert Smart Field';
+   }
 }

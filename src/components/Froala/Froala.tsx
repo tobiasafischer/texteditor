@@ -7,38 +7,33 @@ import 'froala-editor/css/froala_editor.min.css'
 import 'froala-editor/js/plugins.pkgd.min.js'
 import 'froala-editor/js/plugins/colors.min.js'
 import 'froala-editor/css/plugins/colors.min.css'
-import './Froala.scss'
+import './styles/Froala.scss'
 import { editorConfig, fields } from './config'
-import { Container, Header } from './Froala.styled'
+import { Container, Header } from './styles'
 
 type Props = {
    values: Record<string, unknown>
 }
 
 const Froala: React.FC<Props> = ({ values }) => {
-   const buildMenu = (menuFields: Record<string, Object>) => {
-      Object.keys(menuFields).forEach((field: string) => {
-         FroalaEditor.DefineIcon(field, { NAME: field, template: 'text' })
-         FroalaEditor.RegisterCommand(field, {
-            title: 'Advanced options',
-            type: 'dropdown',
-            focus: false,
-            undo: false,
-            refreshAfterCallback: true,
-            options: _.invert(menuFields[field]),
-            callback: function (this, cmd: any, val: any) {
-               this.html.insert(this.clean.html(_.get(values, val)))
-               this.undo.saveStep()
-            },
-         })
+   Object.keys(fields).forEach((field: string) => {
+      FroalaEditor.DefineIcon(field, { NAME: field, template: 'text' })
+      FroalaEditor.RegisterCommand(field, {
+         title: `${field} variables`,
+         type: 'dropdown',
+         focus: false,
+         undo: true,
+         options: _.invert((fields as any)[field]),
+         callback: function (this, cmd: any, val: any) {
+            this.html.insert(this.clean.html(_.get(values, val)))
+            this.undo.saveStep()
+         },
       })
-   }
-
-   buildMenu(fields)
+   })
 
    return (
       <Container>
-         <Header />
+         <Header id="i hate this" />
          <FroalaEditorComponent config={editorConfig} />
       </Container>
    )

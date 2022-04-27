@@ -74,7 +74,7 @@ const toolbarButtons = {
       buttons: ['undo'],
    },
 }
-
+let isInitialized = false
 export const editorConfig = {
    key: 'bTYPASIBGMWC1YLMP==',
    tabSpaces: 8,
@@ -82,7 +82,19 @@ export const editorConfig = {
    toolbarSticky: true, //idfk
    fontFamily: fonts,
    charCounterCount: true,
-   tooltips: false,
+   events: {
+      initialized: function () {
+         const moreRich = document.getElementById('moreRich-1')
+         moreRich?.addEventListener('mouseenter', function (event) {
+            const tooltip = document.getElementsByClassName('fr-tooltip')[0]
+            tooltip.id = 'smart-tooltip'
+         })
+         moreRich?.addEventListener('mouseleave', function (event) {
+            const tooltip = document.getElementsByClassName('fr-tooltip')[0]
+            tooltip.id = ''
+         })
+      },
+   },
    fontFamilySelection: true,
    fontSize: sizes,
    fontSizeSelection: true,
