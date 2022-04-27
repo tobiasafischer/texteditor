@@ -41,11 +41,14 @@ export const FontSize = Extension.create<FontSizeOptions>({
       return {
          setFontSize:
             (fontSize) =>
-            ({ chain }) =>
-               chain().setMark('textStyle', { fontSize }).run(),
+            ({ chain }) => {
+               const mirror = document.getElementsByClassName('ProseMirror')[0]
+               mirror.style.fontSize = fontSize
+               chain().setMark('textStyle', { fontSize }).run()
+            },
          unsetFontSize:
             () =>
-            ({ chain: any }) =>
+            ({ chain }) =>
                chain().setMark('textStyle', { fontSize: null }).removeEmptyTextStyle().run(),
       }
    },

@@ -1,3 +1,5 @@
+import { fields } from './SmartFields'
+
 export const clientSmartFields = {
    'Client Full Name': 'name',
    'Client First Name': 'firstName',
@@ -46,7 +48,7 @@ const fonts = {
 
 const toolbarButtons = {
    moreRich: {
-      buttons: [...Object.keys(clientSmartFields)],
+      buttons: Object.keys(fields),
       buttonsVisible: 0,
    },
    moreText: {

@@ -97,13 +97,9 @@ const MenuBar: React.FC<{ editor: any }> = ({ editor }) => {
    )
 }
 
-const TipTap: React.FC = ({ onChange, content }: any) => {
+const TipTap: React.FC = ({ content }: any) => {
    const editor = useEditor({
       extensions: [StarterKit, TextStyle, FontFamily, FontSize],
-      // onUpdate({ editor }) {
-      //    onChange(editor.getHTML())
-      // },
-      // autofocus: true,
       content,
    })
 

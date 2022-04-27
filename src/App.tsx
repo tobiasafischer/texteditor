@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Froala, TipTap } from './components'
+import { values } from './components/Froala/api'
 
 const Container = styled.div`
    display: flex;
@@ -34,7 +35,7 @@ const App: React.FC = () => {
    return (
       <Container>
          <Button onClick={handleClick}>{show ? 'Go to TipTap' : 'Go to Froala'}</Button>
-         {show ? <Froala /> : <TipTap />}
+         {show ? <Froala values={values} /> : <TipTap />}
       </Container>
    )
 }
