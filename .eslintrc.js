@@ -26,7 +26,7 @@ module.exports = {
 
       // warns on unused vars vs breaks everything. this is for dev purposes
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
+      // '@typescript-eslint/no-unused-vars': 'warn',
 
       'react/jsx-curly-newline': 'off', // this is basically for if we have like 1 or 2 obj it makes the code cleaner by having it on 1 line const a = { bar: 1, foo: 2 }
       'react/jsx-boolean-value': 'off', // lets us put true for boolean value, lets code be more declarative (and readability)

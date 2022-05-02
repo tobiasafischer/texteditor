@@ -33,7 +33,7 @@ const Froala: React.FC<Props> = ({ values }) => {
 
    return (
       <Container>
-         <Header id="i hate this" />
+         <Header />
          <FroalaEditorComponent config={editorConfig} />
       </Container>
    )

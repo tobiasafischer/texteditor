@@ -4,9 +4,9 @@ import FontFamily from '@tiptap/extension-font-family'
 import TextStyle from '@tiptap/extension-text-style'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import FontSize from '@tobiasafischer/tiptap-extension-font-size'
 
 import Dropdown from './Dropdown'
-import { FontSize } from './FontSize'
 import { Container, Button, ButtonGroup, Header, ButtonTab, DropdownItem } from './TipTap.styled'
 
 export const sizes = [

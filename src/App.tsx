@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Froala, TipTap } from './components'
+import { Froala, TipTap, Quill } from './components'
 import { values } from './components/Froala/api'
 
 const Container = styled.div`
@@ -8,8 +8,19 @@ const Container = styled.div`
    justify-content: center;
    align-items: center;
    flex-direction: column;
+   position: relative;
    width: 100vw;
    height: 100vh;
+`
+
+const ButtonContainer = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   gap: 20px;
+   position: absolute;
+   top: 20%;
 `
 
 const Button = styled.button`
@@ -21,21 +32,33 @@ const Button = styled.button`
    border-radius: 5px;
    background-color: transparent;
    border: 1px solid #333;
-   position: absolute;
-   top: 20%;
    &:hover {
       background-color: lightgray;
    }
 `
 
 const App: React.FC = () => {
-   const [show, setShow] = useState(true)
-   const handleClick = () => setShow((prev) => !prev)
+   const [active, setActive] = useState('tiptap')
+   const handleFroala = () => setActive('froala')
+   const handleTipTap = () => setActive('tiptap')
+   const handleQuill = () => setActive('quill')
 
    return (
       <Container>
-         <Button onClick={handleClick}>{show ? 'Go to TipTap' : 'Go to Froala'}</Button>
-         {show ? <Froala values={values} /> : <TipTap />}
+         <ButtonContainer>
+            <Button onClick={handleFroala} disabled={active === 'froala'}>
+               Go to Froala
+            </Button>
+            <Button onClick={handleTipTap} disabled={active === 'tiptap'}>
+               Go to TipTap
+            </Button>
+            <Button onClick={handleQuill} disabled={active === 'quill'}>
+               Go to Quill
+            </Button>
+         </ButtonContainer>
+         {active === 'froala' && <Froala values={values} />}
+         {active === 'tiptap' && <TipTap />}
+         {active === 'quill' && <Quill />}
       </Container>
    )
 }
