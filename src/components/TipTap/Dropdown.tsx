@@ -1,5 +1,6 @@
 //@ts-nocheck
 import React, { useState } from 'react'
+import { Editor } from '@tiptap/react'
 import { usePopper } from 'react-popper'
 import styled from 'styled-components'
 import { Button } from './TipTap.styled'
@@ -15,7 +16,11 @@ const DropdownContainer = styled.div<{ visible: boolean }>`
    padding: 5px 0px;
 `
 
-const Dropdown: React.FC<{ title: string; children: any }> = ({ children, title }) => {
+const Dropdown: React.FC<{ title: string; children: any; editor: Editor }> = ({
+   children,
+   title,
+   editor,
+}) => {
    // lol
    const [visible, setVisible] = useState(false)
    const [referenceRef, setReferenceRef] = useState(null)
@@ -25,7 +30,10 @@ const Dropdown: React.FC<{ title: string; children: any }> = ({ children, title 
       placement: 'top',
    })
 
-   const handleClick = () => setVisible((prev) => !prev)
+   const handleClick = () => {
+      setVisible((prev) => !prev)
+      editor.chain().focus()
+   }
 
    return (
       <>
