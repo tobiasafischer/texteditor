@@ -1,27 +1,21 @@
 import { Extension, Editor } from '@tiptap/core'
 import '@tiptap/extension-text-style'
-import { Node } from '@tiptap/react'
 
 type FontSizeOptions = {
    types: string[]
 }
 
 let caretPosition = Infinity
-
-const removeTempSpan = (p: Element) => {
+const removeTempSpan = (p: Element) =>
    p?.childNodes.forEach((child) => {
       const htmlChild = child as HTMLSpanElement
-
       htmlChild.innerHTML = htmlChild.innerHTML.replace(String.fromCodePoint(0x200b), '')
    })
-}
 
 const initialize = (fontSize: string) => {
    const p = Array.from(document.querySelector('.ProseMirror')?.children || [])[0]
-   // grab the p tag which holds the span elements
    removeTempSpan(p)
    if ((p?.childNodes[0] as HTMLElement).tagName === 'BR') {
-      // create a new temporary span element
       p.innerHTML = `<span style="font-size: ${fontSize}">&ZeroWidthSpace;</span>`
    }
 }
@@ -29,17 +23,18 @@ const initialize = (fontSize: string) => {
 const injectTempSpan = (fontSize: string, editor: Editor) => {
    const pList = Array.from(document.querySelector('.ProseMirror')?.children || [])
    pList.forEach((p) => {
-      if (p?.childNodes.length === 1 && (p?.childNodes[0] as HTMLElement).tagName === 'BR')
+      if (p?.childNodes.length === 1 && (p?.childNodes[0] as HTMLElement).tagName === 'BR') {
          return initialize(fontSize)
+      }
 
       removeTempSpan(p)
 
       let counter = 0
       let pos = 0
-      p?.childNodes.forEach((child, idx) => {
+      p?.childNodes.forEach((child) => {
          if (counter <= caretPosition) {
             const htmlChild = child as HTMLSpanElement
-            let caretPositionTrim = caretPosition - counter - 2
+            const caretPositionTrim = caretPosition - counter - 2
             counter += htmlChild.innerHTML.length
             if (counter >= caretPosition - 2) {
                if (htmlChild.style.fontSize !== fontSize) {
@@ -69,12 +64,14 @@ declare module '@tiptap/core' {
 
 export const FontSize = Extension.create<FontSizeOptions>({
    name: 'fontSize',
-   //@ts-ignore
-   onTransaction: ({ editor, transaction }) => (caretPosition = transaction.selection.$anchor.pos),
-   //@ts-ignore
-   onCreate: ({ editor }: { Editor }) => editor.chain().focus().initialize('12px').run(),
-   //@ts-ignore
-   onUpdate: ({ editor }: { Editor }) => {
+   // @ts-ignore
+   onTransaction: ({ transaction }) => {
+      caretPosition = transaction.selection.$anchor.pos
+   },
+   // @ts-ignore
+   onCreate: ({ editor }) => editor.chain().focus().initialize('12px').run(),
+   // @ts-ignore
+   onUpdate: ({ editor }) => {
       if (editor.getText().length === 0) editor.chain().focus().initialize('12px').run()
    },
    addGlobalAttributes: () => [

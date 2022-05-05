@@ -1,68 +1,68 @@
 module.exports = {
    env: {
+      browser: true,
       es2021: true,
    },
    globals: {
       JSX: true,
    },
-   extends: ['plugin:react/recommended'],
-   plugins: ['@typescript-eslint', 'import'],
-   overrides: [
-      {
-         files: ['*.ts', '*.tsx'], // Your TypeScript files extension
-         extends: ['plugin:react/recommended'],
-         parserOptions: {
-            ecmaVersion: 12,
-            sourceType: 'module',
-            project: ['./tsconfig.json'], // Specify it only for TypeScript files
-         },
+   extends: ['plugin:react/recommended', 'airbnb'],
+   parser: '@typescript-eslint/parser',
+   parserOptions: {
+      ecmaFeatures: {
+         jsx: true,
       },
-   ],
+      ecmaVersion: 12,
+      sourceType: 'module',
+   },
+   plugins: ['react', '@typescript-eslint'],
    rules: {
-      // 'no-undef': 'error',
-      'jsx-a11y/aria-proptypes': 'off', // allows us to !!formErrors, this just cleans up the ternary, will return 'true' or 'false'
-      'no-nested-ternary': 'off', // in most cases this will never come up but if you ever need nested ternary it is usually just so code is more concise
-      'import/prefer-default-export': 'off', // fixes indexing issues / styled files we dont want default exports
-
-      // warns on unused vars vs breaks everything. this is for dev purposes
+      'consistent-return': 'off',
+      'semi-style': 'off',
+      'no-nested-ternary': 'off',
+      'import/prefer-default-export': 'off',
+      'spaced-comment': ['warn'],
       'no-unused-vars': 'off',
-      // '@typescript-eslint/no-unused-vars': 'warn',
-
-      'react/jsx-curly-newline': 'off', // this is basically for if we have like 1 or 2 obj it makes the code cleaner by having it on 1 line const a = { bar: 1, foo: 2 }
-      'react/jsx-boolean-value': 'off', // lets us put true for boolean value, lets code be more declarative (and readability)
-      'function-paren-newline': 'off', // lets us do functions w/ vars on same line function(a, b)
-      'operator-linebreak': 'off', // lets us do some ternary react rendering
-      'implicit-arrow-linebreak': 'off', // this can lead to some funky arrow function return placements
-      'no-trailing-spaces': 'off', // we cant do multiline comments
-
-      // messes with our style guide with prepended white space
-      indent: 'off',
-      'react/jsx-indent': 'off',
-      'react/jsx-indent-props': 'off',
-
-      'react/require-default-props': 'off', // typescript handles this
-      'no-confusing-arrow': 'off', // messes w/ styled component theme
-      'no-param-reassign': 'off', // cant reassign state in redux
-      'react/prop-types': 'off', // overriding react prop type w/ typescript
-
-      'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }], // maybe we want jsx in tsx files wow
-
-      // this thinks react import is being used before its being defiend lol
+      '@typescript-eslint/no-unused-vars': ['warn'],
+      'react/jsx-wrap-multilines': 'off',
+      'react/jsx-curly-newline': 'off',
+      'react/jsx-boolean-value': 'off',
+      'function-paren-newline': 'off',
+      'operator-linebreak': 'off',
+      'implicit-arrow-linebreak': 'off',
+      'no-trailing-spaces': 'off',
+      indent: ['off'],
+      'react/jsx-indent': ['off'],
+      'react/jsx-indent-props': ['off'],
+      'no-tabs': 0,
+      'react/require-default-props': 'off',
+      'no-unneeded-ternary': 'off',
+      'no-confusing-arrow': 'off',
+      'no-bitwise': 0,
+      'no-param-reassign': 0,
+      'arrow-body-style': ['warn', 'as-needed'],
+      'react/prop-types': 'off',
+      'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
       'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': 'error',
-
-      'linebreak-style': 'off', // LF CRLF thing
-      'react/jsx-props-no-spreading': 'off', // we want prop spreading on jsx
-      'no-underscore-dangle': 'off', // _id
-      'object-curly-newline': 'off', // inline object stuff this makes our prop imports better
-      'no-console': 'error', // lets us console.log
-      semi: 'off', // ew
-
-      // on imports we dont need the file extension name
-      'import/extensions': 'off',
-      'prettier/prettier': 'off',
-      'no-console': 'off',
-      // import order prettier stuff
+      '@typescript-eslint/no-use-before-define': ['error'],
+      'linebreak-style': 0,
+      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      'react/jsx-props-no-spreading': 'off',
+      'no-underscore-dangle': 'off',
+      'object-curly-newline': 'off',
+      'dot-notation': 'off',
+      'no-console': 'warn',
+      semi: 'off',
+      'import/extensions': [
+         'error',
+         'ignorePackages',
+         {
+            js: 'never',
+            jsx: 'never',
+            ts: 'never',
+            tsx: 'never',
+         },
+      ],
       'import/order': [
          'error',
          {
@@ -81,6 +81,13 @@ module.exports = {
             },
          },
       ],
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
+   },
+   settings: {
+      'import/resolver': {
+         node: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            paths: ['./src'],
+         },
+      },
    },
 }

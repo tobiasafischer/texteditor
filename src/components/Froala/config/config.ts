@@ -74,22 +74,22 @@ const toolbarButtons = {
       buttons: ['undo'],
    },
 }
-let isInitialized = false
+const isInitialized = false
 export const editorConfig = {
    key: 'bTYPASIBGMWC1YLMP==',
    tabSpaces: 8,
    heightMin: 10, // min height of editor
-   toolbarSticky: true, //idfk
+   toolbarSticky: true, // idfk
    fontFamily: fonts,
    charCounterCount: true,
    events: {
-      initialized: function () {
+      initialized() {
          const moreRich = document.getElementById('moreRich-1')
-         moreRich?.addEventListener('mouseenter', function (event) {
+         moreRich?.addEventListener('mouseenter', (event) => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = 'smart-tooltip'
          })
-         moreRich?.addEventListener('mouseleave', function (event) {
+         moreRich?.addEventListener('mouseleave', (event) => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = ''
          })
@@ -116,7 +116,7 @@ export const editorConfig = {
       'codeView',
       'moreOptions',
    ],
-   toolbarButtons: toolbarButtons,
+   toolbarButtons,
    toolbarButtonsXS: toolbarButtons,
    toolbarButtonsSM: toolbarButtons,
    toolbarButtonsMD: toolbarButtons,

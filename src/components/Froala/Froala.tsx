@@ -2,10 +2,9 @@ import React from 'react'
 import FroalaEditor from 'froala-editor'
 import _ from 'lodash'
 import FroalaEditorComponent from 'react-froala-wysiwyg'
-import 'froala-editor/js/froala_editor.min.js'
 import 'froala-editor/css/froala_editor.min.css'
-import 'froala-editor/js/plugins.pkgd.min.js'
-import 'froala-editor/js/plugins/colors.min.js'
+import 'froala-editor/js/plugins.pkgd.min'
+import 'froala-editor/js/plugins/colors.min'
 import 'froala-editor/css/plugins/colors.min.css'
 import './styles/Froala.scss'
 import { editorConfig, fields } from './config'
@@ -24,8 +23,10 @@ const Froala: React.FC<Props> = ({ values }) => {
          focus: false,
          undo: true,
          options: _.invert((fields as any)[field]),
-         callback: function (this, cmd: any, val: any) {
+         callback(this, cmd: any, val: any) {
+            // eslint-disable-next-line react/no-this-in-sfc
             this.html.insert(this.clean.html(_.get(values, val)))
+            // eslint-disable-next-line react/no-this-in-sfc
             this.undo.saveStep()
          },
       })

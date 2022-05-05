@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 import React, { useState } from 'react'
 import FontFamily from '@tiptap/extension-font-family'
 import TextStyle from '@tiptap/extension-text-style'
@@ -103,7 +103,6 @@ const MenuBar: React.FC<{ editor: Editor }> = ({ editor }) => {
 }
 
 const TipTap: React.FC = () => {
-   const [caretPosition, setCaretPosition] = useState(0)
    const editor = useEditor({
       extensions: [StarterKit, TextStyle, FontFamily, FontSize],
    })

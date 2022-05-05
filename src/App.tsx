@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Froala, TipTap, Quill } from './components'
+import { Froala, TipTap } from './components'
 import { values } from './components/Froala/api'
 
 const Container = styled.div`
@@ -41,7 +41,6 @@ const App: React.FC = () => {
    const [active, setActive] = useState('tiptap')
    const handleFroala = () => setActive('froala')
    const handleTipTap = () => setActive('tiptap')
-   const handleQuill = () => setActive('quill')
 
    return (
       <Container>
@@ -52,13 +51,9 @@ const App: React.FC = () => {
             <Button onClick={handleTipTap} disabled={active === 'tiptap'}>
                Go to TipTap
             </Button>
-            <Button onClick={handleQuill} disabled={active === 'quill'}>
-               Go to Quill
-            </Button>
          </ButtonContainer>
          {active === 'froala' && <Froala values={values} />}
          {active === 'tiptap' && <TipTap />}
-         {active === 'quill' && <Quill />}
       </Container>
    )
 }

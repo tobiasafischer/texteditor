@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 import React, { useState } from 'react'
 import { Editor } from '@tiptap/react'
 import { usePopper } from 'react-popper'
