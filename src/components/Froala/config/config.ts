@@ -74,7 +74,7 @@ const toolbarButtons = {
       buttons: ['undo'],
    },
 }
-const isInitialized = false
+
 export const editorConfig = {
    key: 'bTYPASIBGMWC1YLMP==',
    tabSpaces: 8,
@@ -85,11 +85,11 @@ export const editorConfig = {
    events: {
       initialized() {
          const moreRich = document.getElementById('moreRich-1')
-         moreRich?.addEventListener('mouseenter', (event) => {
+         moreRich?.addEventListener('mouseenter', () => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = 'smart-tooltip'
          })
-         moreRich?.addEventListener('mouseleave', (event) => {
+         moreRich?.addEventListener('mouseleave', () => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = ''
          })
