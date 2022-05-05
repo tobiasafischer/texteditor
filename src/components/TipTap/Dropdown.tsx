@@ -21,7 +21,6 @@ const Dropdown: React.FC<{ title: string; children: any; editor: Editor }> = ({
    title,
    editor,
 }) => {
-   // lol
    const [visible, setVisible] = useState(false)
    const [referenceRef, setReferenceRef] = useState(null)
    const [popperRef, setPopperRef] = useState(null)
@@ -34,7 +33,6 @@ const Dropdown: React.FC<{ title: string; children: any; editor: Editor }> = ({
       setVisible((prev) => !prev)
       editor.chain().focus()
    }
-
    return (
       <>
          <Button ref={setReferenceRef} onClick={handleClick}>

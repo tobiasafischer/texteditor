@@ -46,6 +46,9 @@
       "eslint-plugin-react": "^7.27.0",
       "eslint-plugin-react-hooks": "^4.3.0"
    },
+   "browser": {
+      "crypto": false
+   },
    "scripts": {
       "start": "react-scripts start",
       "build": "react-scripts build",

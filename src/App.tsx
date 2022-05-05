@@ -38,7 +38,7 @@ const Button = styled.button`
 `
 
 const App: React.FC = () => {
-   const [active, setActive] = useState('tiptap')
+   const [active, setActive] = useState('froala')
    const handleFroala = () => setActive('froala')
    const handleTipTap = () => setActive('tiptap')
 

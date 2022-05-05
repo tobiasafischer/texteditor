@@ -1,8 +1,5 @@
 .fr-box {
-   min-height: 351px;
-   max-height: 351px;
-   width: 100%;
-
+   // body
    .fr-wrapper {
       border-radius: 0 !important;
       border: none !important;
@@ -10,95 +7,67 @@
       border-right: 1px solid #e9ecef !important;
       margin: 0 !important;
       height: 259px;
-      .fr-view {
-         height: 100%;
-      }
    }
-   .fr-float-left {
-      margin: 0 !important;
-   }
-
-   .fr-float-left {
-      button + button {
-         &:before {
-            width: 0px;
-         }
-      }
-   }
-
-   .fr-float-left > button:before {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 19%;
-      height: 61%;
-      width: 1px;
-      background-color: #e9ecef;
-   }
-
+   // the toolbar duh lol
    .fr-toolbar {
       border-color: #efefef;
+      // button spacing on toolbar
+      .fr-float-left {
+         margin: 0 !important;
+      }
 
+      // line separators between buttons
+      .fr-float-left > button:before {
+         content: '';
+         position: absolute;
+         right: 0;
+         top: 19%;
+         height: 61%;
+         width: 1px;
+         background-color: #e9ecef;
+      }
+
+      // this is so we can style the buttons
       .fr-btn-grp > button {
          display: flex !important;
          justify-content: center !important;
          align-items: center !important;
          height: 52px;
-         border: none;
          margin: 0px;
          padding: 0px 15px !important;
+      }
+
+      // styles the smart field buttons
+      .fr-dropdown {
+         padding: 0px 10px !important;
+         span {
+            padding: 0 !important;
+            margin: 0 !important;
+            margin-right: 5px !important;
+         }
+      }
+
+      // this is for the dropdown menu to work w/ smartfields
+      .fr-more-toolbar .fr-dropdown-menu {
+         bottom: 100px !important;
+      }
+
+      // this is so that there isnt space when we open the smart fields
+      .fr-newline {
+         padding: 0px !important;
+      }
+
+      // same as above but so our style is the same
+      .fr-open {
+         margin-bottom: 0 !important;
       }
    }
 }
 
-.fr-dropdown:after {
-   position: relative !important;
-   top: 0 !important;
-   right: 0 !important;
-   border-top: 4px solid #697789 !important;
-}
-
-.fr-dropdown {
-   display: flex !important;
-   justify-content: center !important;
-   align-items: center !important;
-   padding: 0px 10px !important ;
-   span {
-      padding: 0 !important;
-      margin: 0 !important;
-   }
-}
-
-#moreRich-1 {
-   svg {
-      display: none;
-   }
-   &:after {
-      font-weight: 500;
-      content: 'Smart Fields';
-   }
-}
-
-.fr-newline {
-   padding: 0px !important;
-}
-
-.fr-dropdown-menu {
-   bottom: 100px !important;
-}
-
-.fr-open {
-   margin-bottom: 0 !important;
-}
-
+// replace for tooltip override
 #smart-tooltip {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 0px;
-   left: 145px !important;
-   &:after {
-      font-size: 11px;
-      content: 'Insert Smart Field';
-   }
+   font-size: 11px;
 }

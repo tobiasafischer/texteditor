@@ -51,6 +51,8 @@ const injectTempSpan = (fontSize: string, editor: Editor) => {
    })
 }
 
+let defFontSize = '12px'
+
 declare module '@tiptap/core' {
    interface Commands<ReturnType> {
       fontSize: {
@@ -67,12 +69,13 @@ export const FontSize = Extension.create<FontSizeOptions>({
    // @ts-ignore
    onTransaction: ({ transaction }) => {
       caretPosition = transaction.selection.$anchor.pos
+      console.log(caretPosition)
    },
    // @ts-ignore
    onCreate: ({ editor }) => editor.chain().focus().initialize('12px').run(),
    // @ts-ignore
    onUpdate: ({ editor }) => {
-      if (editor.getText().length === 0) editor.chain().focus().initialize('12px').run()
+      if (editor.getText().length === 0) editor.chain().focus().initialize(defFontSize).run()
    },
    addGlobalAttributes: () => [
       {
@@ -95,6 +98,7 @@ export const FontSize = Extension.create<FontSizeOptions>({
       setFontSize:
          (fontSize: string) =>
          ({ chain, editor }: any) => {
+            defFontSize = fontSize
             injectTempSpan(fontSize, editor)
             return chain().setMark('textStyle', { fontSize }).run()
          },

@@ -1,20 +1,5 @@
 import { fields } from './SmartFields'
 
-export const clientSmartFields = {
-   'Client Full Name': 'name',
-   'Client First Name': 'firstName',
-   'Client Last Name': 'lastName',
-   'Client Email': 'email',
-   'Client Phone': 'phone',
-   'Client Alt Contact First': 'altContact.firstName',
-   'Client Alt Contact Last': 'altContact.lastName',
-   'Client Alt Email': 'altContact.email',
-   'Client Alt Phone': 'altContact.phone',
-   'Client Company Name': 'company.name',
-   'Client Address': 'address',
-   'Client Shipping Address': 'shippingAddress',
-}
-
 const sizes = [
    '8',
    '9',
@@ -33,6 +18,7 @@ const sizes = [
    '72',
    '96',
 ]
+
 const fonts = {
    Arial: 'Arial',
    Verdana: 'Verdana',
@@ -88,11 +74,13 @@ export const editorConfig = {
          moreRich?.addEventListener('mouseenter', () => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = 'smart-tooltip'
+            tooltip.innerHTML = 'Insert Smartfields'
          })
          moreRich?.addEventListener('mouseleave', () => {
             const tooltip = document.getElementsByClassName('fr-tooltip')[0]
             tooltip.id = ''
          })
+         moreRich!.innerHTML = 'Smart Fields'
       },
    },
    fontFamilySelection: true,
