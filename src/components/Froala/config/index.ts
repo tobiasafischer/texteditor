@@ -1,2 +1,2 @@
-export * from './SmartFields'
+export * from './smartFields'
 export * from './config'

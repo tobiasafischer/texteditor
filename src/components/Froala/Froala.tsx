@@ -20,8 +20,6 @@ const Froala: React.FC<Props> = ({ values }) => {
       FroalaEditor.RegisterCommand(field, {
          title: `${field} variables`,
          type: 'dropdown',
-         focus: false,
-         undo: true,
          options: _.invert((fields as any)[field]),
          callback(this, cmd: any, val: any) {
             // eslint-disable-next-line react/no-this-in-sfc

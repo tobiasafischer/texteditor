@@ -1,4 +1,4 @@
-import { fields } from './SmartFields'
+import { fields } from './smartFields'
 
 const sizes = [
    '8',
